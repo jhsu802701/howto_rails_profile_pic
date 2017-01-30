@@ -1,0 +1,1 @@
+# rails_howto_avatar
