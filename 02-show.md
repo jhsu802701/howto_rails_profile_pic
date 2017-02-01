@@ -4,6 +4,21 @@ In this chapter, you will update the user model to allow profile pictures, seed 
 ## Git Branch
 Enter the command "git checkout -b 02-show".
 
+## Gemfile
+* Add the following lines to the end of the Gemfile:
+```
+# BEGIN: for user profile pictures
+gem 'carrierwave' # For uploading files
+gem 'mini_magick' # For resizing images
+# END: for user profile pictures
+```
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added carrierwave and mini_magick gems for user profile pictures"
+```
+
 ## Adding the Picture Parameter to the User Model
 * Enter the following commands:
 ```
