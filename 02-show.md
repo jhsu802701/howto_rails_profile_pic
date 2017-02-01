@@ -48,6 +48,7 @@ end
 end
 ```
 * Enter the command "sh seed.sh".
+* Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
 git add .
