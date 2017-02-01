@@ -1,6 +1,7 @@
 # Chapter 1: Getting Started
 
-## Docker
+## Development Environment
+You should be using the rbenv-general Docker image.  Go to the [Ruby on Racetracks site](http://www.rubyonracetracks.com/), click on Installation -> 
 
 ## Creating the App
 
