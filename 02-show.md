@@ -7,7 +7,7 @@ Enter the command "git checkout -b 02-show".
 ## Adding the Picture Parameter to the User Model
 * Enter the following commands:
 ```
-rails generate migration add_picture_to_microposts picture:string
+rails generate migration add_picture_to_users picture:string
 rails db:migrate
 ```
 * Enter the command "sh testm.sh".  All tests should pass.
