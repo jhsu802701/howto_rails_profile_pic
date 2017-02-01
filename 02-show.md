@@ -47,6 +47,18 @@ end
 end
 ```
 
+# Updating the User Profile Page
+* Edit the app/views/users/show.html.erb file.  Add the profile picture display just before the "</section>" tag.  Your code should look like this:
+```
+    . . . .
+    <br>
+    <% if @user.picture? %>
+      <%= image_tag @user.picture.url %>
+    <% end %>
+    </section>
+  </aside>
+</div>
+```
 
 
 ## Wrapping Up
