@@ -33,6 +33,21 @@ rails db:migrate
 git add .
 git commit -m "Added the picture parameter to the user model"
 ```
+## Updating the User Model
+* Add the line "mount_uploader :picture, PictureUploader" to the app/models/user.rb file just before the private section.  The file should look like this:
+```
+. . . .
+
+class User < ApplicationRecord
+  . . . . 
+
+  # Allows the file uploading process to fill in the picture parameter
+  mount_uploader :picture, PictureUploader
+
+  private
+
+  . . . .
+```
 
 ## Seeding the Database
 * Edit the file db/seeds.rb.  In the second and third User.create! sections (the parts that add many users instead of just one), add the line "remote_picture_url: Faker::Avatar.image,".  The code should look something like this:
