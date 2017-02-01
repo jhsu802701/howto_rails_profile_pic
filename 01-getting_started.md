@@ -1,9 +1,9 @@
 # Chapter 1: Getting Started
 
-## Development Environment
-You should be using the rbenv-general Docker image.  Go to the [Ruby on Racetracks site](http://www.rubyonracetracks.com/), click on Installation -> 
-
 ## Creating the App
+* Install the GenericApp gem by entering the command "gem install generic_app".
+* 
+* Enter the command "generic_app".
 
 ## README-to_do.txt
 
