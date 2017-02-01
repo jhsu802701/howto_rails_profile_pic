@@ -4,8 +4,50 @@ In this chapter, you will update the user model to allow profile pictures, seed 
 ## Git Branch
 Enter the command "git checkout -b 02-show".
 
-## User Model
-* Go to the 
+## Adding the Picture Parameter to the User Model
+* Enter the following commands:
+```
+rails generate migration add_picture_to_microposts picture:string
+rails db:migrate
+```
+* Enter the command "sh testm.sh".  All tests should pass.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Added the picture parameter to the user model"
+```
+
+## Seeding the Database
+* Edit the file db/seeds.rb.  In the second and third User.create! sections (the parts that add many users instead of just one), add the line "remote_picture_url: Faker::Avatar.image,".  The code should look something like this:
+```
+User.create!( . . . .
+            . . . .
+            . . . .)
+
+puts . . . .
+
+50.times do |n|
+  . . . .
+
+  User.create!( . . . .
+               . . . .
+               remote_picture_url: Faker::Avatar.image,
+               confirmed_at: Time.now)
+  print  . . . .
+end
+
+50.times do |n|
+  . . . .
+  User.create!( . . . .
+               . . . .
+               remote_picture_url: Faker::Avatar.image,
+               confirmed_at: Time.now)
+  print . . . .
+end
+```
+
+
 
 ## Wrapping Up
 * Enter the command "git push origin 02-show".
