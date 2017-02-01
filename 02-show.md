@@ -47,6 +47,12 @@ end
   print . . . .
 end
 ```
+* Enter the command "sh seed.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Updated the seeding script to give profile pictures to most users"
+```
 
 # Updating the User Profile Page
 * Edit the app/views/users/show.html.erb file.  Add the profile picture display just before the "</section>" tag.  Your code should look like this:
