@@ -9,4 +9,4 @@
 This document shows how to give users the option of adding a profile picture.
 
 ## Why isn't this provided by GenericApp?
-Not all apps require this feature.  Storing the profile pictures uses up disk space, which may be an issue if your app has a sufficiently large number of apps or if your production environment (such as a free Heroku account) gives you only a small amount of disk space.
+Not all apps require this feature.  Storing the profile pictures uses up disk space, which may be an issue if your app has a sufficiently large number of apps or if your production environment (such as a free Heroku account) gives you only a small amount of disk space.  Storing profile pictures in the cloud is an option, but the free deal from AWS expires after a year.
