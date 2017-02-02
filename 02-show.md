@@ -18,6 +18,14 @@ gem 'mini_magick' # For resizing images
 git add .
 git commit -m "Added carrierwave and mini_magick gems for user profile pictures"
 ```
+## Adding the Picture Uploader
+* Enter the command "rails generate uploader Picture".
+* Enter the command "sh git_check.sh".
+* Enter the following commands:
+```
+git add .
+git commit -m "Added the picture uploader"
+```
 
 ## Adding the Picture Parameter to the User Model
 * Enter the following commands:
