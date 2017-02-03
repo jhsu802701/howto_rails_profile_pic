@@ -20,6 +20,8 @@ git commit -m "Added carrierwave and mini_magick gems for user profile pictures"
 ```
 ## Adding the Picture Uploader
 * Enter the command "rails generate uploader Picture".
+* Enter the command "rubocop -D".  You'll see offenses in app/uploaders/picture_uploader.rb.
+* Edit the .rubocop.yml file, and add app/uploaders/picture_uploader.rb to the list of files excluded from AllCops.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
