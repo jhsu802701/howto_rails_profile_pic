@@ -88,6 +88,7 @@ end
 end
 ```
 * Enter the command "sh seed.sh".
+* Add the line "public/uploads/" to the end of the .gitignore file.  This is necessary to keep the uploaded and seeded pictures out of the source code.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
