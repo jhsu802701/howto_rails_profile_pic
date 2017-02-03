@@ -96,12 +96,15 @@ git commit -m "Updated the seeding script to give profile pictures to most users
 ```
 
 # Updating the User Profile Page
-* Edit the app/views/users/show.html.erb file.  Add the profile picture display just before the "</section>" tag.  Your code should look like this:
+* Edit the app/views/users/show.html.erb file.  Add the profile picture display just before the delete button.  Your code should look like this:
 ```
     . . . .
-    <br>
+
     <% if @user.picture? %>
       <%= image_tag @user.picture.url %>
+    <% end %>
+    <% if admin_signed_in? %>
+      . . . .
     <% end %>
     </section>
   </aside>
