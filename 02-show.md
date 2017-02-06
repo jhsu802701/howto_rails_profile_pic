@@ -75,32 +75,47 @@ git commit -m "Allowed the file uploading process to fill in the picture paramet
 ```
 
 ## Seeding the Database
-* Edit the file db/seeds.rb.  In the second and third User.create! sections (the parts that add many users instead of just one), add the line "remote_picture_url: Faker::Avatar.image,".  The code should look something like this:
+* Edit the file db/seeds.rb.  Replace the entire user section with the following:
 ```
-User.create!( . . . .
-            . . . .
-            . . . .)
+puts "Users: #{User.count}/101"
 
-puts . . . .
+User.create!(last_name: 'Arroway', first_name: 'Ellie',
+             username: 'earroway',
+             email: 'ellie_arroway@rubyonracetracks.com',
+             password: '3.14159265',
+             password_confirmation: '3.14159265',
+             confirmed_at: Time.now)
 
-50.times do |n|
-  . . . .
+puts "Users: #{User.count}/101"
 
-  User.create!( . . . .
-               . . . .
+10.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = "user#{n + 1}@rubyonracetracks.com"
+
+  User.create!(last_name: name_l, first_name: name_f,
+               username: "user-pic-#{n + 1}", email: email_address,
+               password: 'Daytona 500',
+               password_confirmation: 'Daytona 500',
                remote_picture_url: Faker::Avatar.image,
                confirmed_at: Time.now)
-  print  . . . .
+  print  " #{User.count} "
 end
 
-50.times do |n|
-  . . . .
-  User.create!( . . . .
-               . . . .
-               remote_picture_url: Faker::Avatar.image,
+90.times do |n|
+  name_l = Faker::Name.last_name
+  name_f = Faker::Name.first_name
+  email_address = "user-faker-#{n + 1}@rubyonracetracks.com"
+
+  User.create!(last_name: name_l, first_name: name_f,
+               username: "user-nopic-#{n + 1}", email: email_address,
+               password: 'Daytona 500',
+               password_confirmation: 'Daytona 500',
                confirmed_at: Time.now)
-  print . . . .
+  print  " #{User.count} " if (User.count % 10).zero?
 end
+
+puts "Users: #{User.count}/101"
 ```
 * Enter the command "sh seed.sh".
 * Enter the command "sh git_check.sh".
