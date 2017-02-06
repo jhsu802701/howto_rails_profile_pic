@@ -122,7 +122,7 @@ puts "Users: #{User.count}/101"
 * Enter the following commands:
 ```
 git add .
-git commit -m "Updated the seeding script to give profile pictures to most users"
+git commit -m "Updated the seeding script to give profile pictures to a few users"
 ```
 
 # Updating the User Profile Page
