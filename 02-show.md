@@ -67,6 +67,12 @@ class User < ApplicationRecord
 
   . . . .
 ```
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
+* Enter the following commands:
+```
+git add .
+git commit -m "Allowed the file uploading process to fill in the picture parameter"
+```
 
 ## Seeding the Database
 * Edit the file db/seeds.rb.  In the second and third User.create! sections (the parts that add many users instead of just one), add the line "remote_picture_url: Faker::Avatar.image,".  The code should look something like this:
