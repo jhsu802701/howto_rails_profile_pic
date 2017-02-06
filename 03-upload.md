@@ -82,7 +82,9 @@ end
 # rubocop:enable Metrics/BlockLength
 # rubocop:enable Metrics/MethodLength
 ```
-* Enter the command "sh build_fast.sh".
+* Enter the command "sh build_fast.sh".  Both new integration tests will fail.
+* Enter the command "alias test1='(command for repeating the tests that failed minus the TESTOPTS portion)'".
+* Enter the command "test1".  Both tests fail because the user registration edit form and the user registration signup form lack the option of uploading a file.
 
 ## User Edit Form
 
