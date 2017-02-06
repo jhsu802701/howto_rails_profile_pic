@@ -99,7 +99,7 @@ puts "Users: #{User.count}/101"
                password_confirmation: 'Daytona 500',
                remote_picture_url: Faker::Avatar.image,
                confirmed_at: Time.now)
-  print  " #{User.count} "
+  print " #{User.count} "
 end
 
 90.times do |n|
@@ -112,7 +112,7 @@ end
                password: 'Daytona 500',
                password_confirmation: 'Daytona 500',
                confirmed_at: Time.now)
-  print  " #{User.count} " if (User.count % 10).zero?
+  print " #{User.count} " if (User.count % 10).zero?
 end
 
 puts "Users: #{User.count}/101"
