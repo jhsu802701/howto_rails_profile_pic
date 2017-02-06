@@ -130,15 +130,18 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
 ```
     . . . .
 
+    <br>
     <% if @user.picture? %>
       <%= image_tag @user.picture.url %>
     <% end %>
+    <br>
     <% if admin_signed_in? %>
       . . . .
     <% end %>
   </section>
 </div>
 ```
+* Stop the local server, and then restart it.  (If you neglect to do this, your browser will show an error message.)
 
 
 ## Wrapping Up
