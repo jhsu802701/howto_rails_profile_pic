@@ -18,6 +18,14 @@ gem 'mini_magick' # For resizing images
 git add .
 git commit -m "Added carrierwave and mini_magick gems for user profile pictures"
 ```
+## .gitignore
+* Add the line "public/uploads/" to the end of the .gitignore file.  This is necessary to keep the uploaded and seeded pictures out of the source code.
+* Enter the following commands:
+```
+git add .
+git commit -m "Keep uploaded and seeded pictures out of the source code"
+```
+
 ## Adding the Picture Uploader
 * Enter the command "rails generate uploader Picture".
 * Enter the command "rubocop -D".  You'll see offenses in app/uploaders/picture_uploader.rb.
@@ -88,7 +96,6 @@ end
 end
 ```
 * Enter the command "sh seed.sh".
-* Add the line "public/uploads/" to the end of the .gitignore file.  This is necessary to keep the uploaded and seeded pictures out of the source code.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
