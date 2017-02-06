@@ -15,7 +15,7 @@ Enter the command "git checkout -b 03-upload".
 require 'test_helper'
 
 # NOTE: I could not figure out how to use Capybara to test for
-# the process of uploading a picture to use for an avatar.
+# the process of uploading a profile picture.
 # The following tests are based on the Rails Tutorial procedure
 # for adding a picture to a micropost.
 class UsersPictureUploadTest < ActionDispatch::IntegrationTest
@@ -41,19 +41,19 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'user can signup with avatar' do
+  test 'user can sign up with profile picture' do
     get new_user_registration_path
     assert_select 'input[type=file]'
     p = fixture_file_upload('app/assets/images/higgins.jpg', 'image/jpg')
     post user_registration_path,
-         params: { user: { username: 'jhiggins',
-                           last_name: 'Higgins',
-                           first_name: 'Jonathan',
-                           email: 'jhiggins@example.com',
+         params: { user: { username: 'csagan',
+                           last_name: 'Sagan',
+                           first_name: 'Carl',
+                           email: 'carl_sagan@example.com',
                            picture: p,
-                           password: 'Zeus and Apollo',
-                           password_confirmation: 'Zeus and Apollo' } }
-    u = User.find_by(username: 'jhiggins')
+                           password: 'googolplex',
+                           password_confirmation: 'googalplex' } }
+    u = User.find_by(username: 'csagan')
     assert u.picture?
     get user_confirmation_path(confirmation_token: u.confirmation_token)
     follow_redirect!
@@ -61,17 +61,17 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
     assert_match msg, response.body
     get new_user_session_path
     post user_session_path,
-         params: { user: { username: 'jhiggins',
-                           password: 'Zeus and Apollo' } }
+         params: { user: { username: 'csagan',
+                           password: 'googalplex' } }
     get user_path(u)
-    bn = 'higgins.jpg'
+    bn = 'sagan.jpg'
     url = "/uploads/user/picture/#{u.id}/#{bn}"
     assert_select 'img' do
       assert_select '[src=?]', url
     end
   end
 
-  test 'user can edit avatar' do
+  test 'user can edit profile picture' do
     f1 = 'test/fixtures/files/connery1.jpeg'
     edit_picture(@u1, f1, 'Goldfinger')
     f2 = 'test/fixtures/files/connery2.jpg'
