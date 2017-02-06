@@ -28,8 +28,9 @@ git commit -m "Keep uploaded and seeded pictures out of the source code"
 
 ## Adding the Picture Uploader
 * Enter the command "rails generate uploader Picture".
-* Enter the command "rubocop -D".  You'll see offenses in app/uploaders/picture_uploader.rb.
+* Enter the command "bundle exec rubocop -D".  You'll see offenses in app/uploaders/picture_uploader.rb.
 * Edit the .rubocop.yml file, and add app/uploaders/picture_uploader.rb to the list of files excluded from AllCops.
+* Enter the command "bundle exec rubocop -D".  There should be no offenses.
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
