@@ -9,6 +9,9 @@ Enter the command "git checkout -b 03-upload".
 * Enter the command "rails generate integration_test users_picture_upload".
 * Replace the contents of the test/integration/users_picture_upload.rb file with the following:
 ```
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/MethodLength
 require 'test_helper'
 
 # NOTE: I could not figure out how to use Capybara to test for
@@ -75,7 +78,11 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
     edit_picture(@u1, f2, 'Goldfinger')
   end
 end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/MethodLength
 ```
+* Enter the command "sh build_fast.sh".
 
 ## User Edit Form
 
