@@ -135,6 +135,7 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
       <%= image_tag @user.picture.url %>
     <% end %>
     <br>
+    <br>
     <% if admin_signed_in? %>
       . . . .
     <% end %>
