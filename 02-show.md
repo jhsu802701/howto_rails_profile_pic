@@ -143,7 +143,12 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
 </div>
 ```
 * Stop the local server, and then restart it.  (If you neglect to do this, your browser will show an error message.)
-
+* In your browser, log in as an admin, go to the user index, and view the user profile of any user with a username that begins with "user-pic".
+* Enter the following commands:
+```
+git add .
+git commit -m "Updated the user profile page to show profile pictures"
+```
 
 ## Wrapping Up
 * Enter the command "git push origin 02-show".
