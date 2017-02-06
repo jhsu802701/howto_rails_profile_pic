@@ -11,12 +11,10 @@ Enter the command "git checkout -b 03-upload".
 ```
 require 'test_helper'
 
-# NOTE 1: I could not figure out how to use Capybara to test for
+# NOTE: I could not figure out how to use Capybara to test for
 # the process of uploading a picture to use for an avatar.
-# The following tests are based on Listing 13.63 in Rails Tutorial.
-
-# NOTE 2: These tests require the use of the show function to verify
-# the use and display of the new avatar.
+# The following tests are based on the Rails Tutorial procedure
+# for adding a picture to a micropost.
 class UsersPictureUploadTest < ActionDispatch::IntegrationTest
   # uo: user object
   # fn: filename of image file
