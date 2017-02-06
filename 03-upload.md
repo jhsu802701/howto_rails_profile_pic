@@ -129,6 +129,18 @@ end
   });
 </script>
 ```
+* Enter the command "test1".  Both tests now fail because the expected picture files are unavailable.
+
+## Profile Pictures For Test
+* Enter the following commands:
+```
+mkdir test/fixtures/files/
+touch test/fixtures/files/.keep
+```
+* Enter the following command to download a photo of Carl Sagan for the registration form test:
+```
+curl -o test/fixtures/files/rails.png -OL railstutorial.org/rails.png
+```
 
 ## User Registration Controller
 
