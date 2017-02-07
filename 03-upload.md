@@ -139,7 +139,12 @@ touch test/fixtures/files/.keep
 ```
 * Enter the following command to download a photo of Carl Sagan for the registration form test:
 ```
-curl -o test/fixtures/files/rails.png -OL railstutorial.org/rails.png
+curl -o test/fixtures/files/sagan.jpg -OL https://upload.wikimedia.org/wikipedia/commons/e/e8/Sagan_Viking.jpg
+```
+* Enter the following commands to download photos of Sean Connery for the user registration edit form test:
+```
+curl -o test/fixtures/files/connery1.jpg -OL https://upload.wikimedia.org/wikipedia/commons/c/c8/Sean_Connery_1971_%28cropped%29.jpg
+curl -o test/fixtures/files/connery2.jpg -OL https://upload.wikimedia.org/wikipedia/commons/d/d1/Sean_Connery_en_Micheline_Roquebrune_%281983%29.jpg
 ```
 
 ## User Registration Controller
