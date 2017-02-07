@@ -44,7 +44,7 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
   test 'user can sign up with profile picture' do
     get new_user_registration_path
     assert_select 'input[type=file]'
-    p = fixture_file_upload('app/assets/images/higgins.jpg', 'image/jpg')
+    p = fixture_file_upload('test/fixtures/files/sagan.jpg', 'image/jpg')
     post user_registration_path,
          params: { user: { username: 'csagan',
                            last_name: 'Sagan',
@@ -72,7 +72,7 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can edit profile picture' do
-    f1 = 'test/fixtures/files/connery1.jpeg'
+    f1 = 'test/fixtures/files/connery1.jpg'
     edit_picture(@u1, f1, 'Goldfinger')
     f2 = 'test/fixtures/files/connery2.jpg'
     edit_picture(@u1, f2, 'Goldfinger')
@@ -148,6 +148,7 @@ curl -o test/fixtures/files/connery2.jpg -OL https://upload.wikimedia.org/wikipe
 ```
 
 ## User Registration Controller
+* Edit the file app/controllers/users/registrations_controller.rb.  In the configure_sign_up_params and configure_account_update_params definitions, add ":picture" to the list of keys.
 
 ## Wrapping Up
 * Enter the command "git push origin 03-upload".
