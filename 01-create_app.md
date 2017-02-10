@@ -3,7 +3,7 @@
 * Install the GenericApp gem by entering the command "gem install generic_app".
 * Enter the following commands:
 ```
-DATE=`date +%Y-%m-%d-%H%M`
+DATE=`date +%Y-%m-%d-%H%M-%S-%N`
 APP_NAME="tmp-avatar-$DATE"
 echo $APP_NAME
 ```
