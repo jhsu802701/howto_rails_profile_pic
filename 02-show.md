@@ -97,7 +97,7 @@ puts "Users: #{User.count}/101"
                username: "user-pic-#{n + 1}", email: email_address,
                password: 'Daytona 500',
                password_confirmation: 'Daytona 500',
-               remote_picture_url: Faker::Avatar.image,
+               remote_picture_url: Faker::Company.logo,
                confirmed_at: Time.now)
   print " #{User.count} "
 end
