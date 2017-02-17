@@ -183,7 +183,7 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
 * Enter the following commands:
 ```
 git add .
-git commit -m "Updated the user profile page to show profile pictures"
+git commit -m "Updated the user profile page to show profile pictures and the index page to show thumbnails"
 ```
 
 ## Wrapping Up
