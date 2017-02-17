@@ -1,5 +1,5 @@
 # Chapter 2: Showing User Profile Pictures
-In this chapter, you will update the user model to allow profile pictures, seed the database, and update the user profile page to show the profile pictures.  While users will be able to have profile pictures, the process of allowing users to select a profile picture will be tackled later.  Although no tests are added in this chapter, testing will also be tackled later, and the ability to see the profile pictures at the end of this chapter will provide informal confirmation that everything works as expected.
+In this chapter, you will update the user model to allow profile pictures, seed the database, update the user profile page to show the profile pictures, and update the user index page to show profile picture thumbnails.  While users will be able to have profile pictures, the process of allowing users to select a profile picture will be tackled later.  Although no tests are added in this chapter, the you will still run the pre-existing tests.  The ability to see the profile pictures at the end of this chapter will provide informal confirmation that everything works as expected.
 
 ## Git Branch
 Enter the command "git checkout -b 02-show".
@@ -28,9 +28,37 @@ git commit -m "Keep uploaded and seeded pictures out of the source code"
 
 ## Adding the Picture Uploader
 * Enter the command "rails generate uploader Picture".
-* Enter the command "bundle exec rubocop -D".  You'll see offenses in app/uploaders/picture_uploader.rb.
-* Edit the .rubocop.yml file, and add app/uploaders/picture_uploader.rb to the list of files excluded from AllCops.
-* Enter the command "bundle exec rubocop -D".  There should be no offenses.
+* Replace the contents of the app/uploaders/picture_uploader.rb file with the following:
+```
+#
+class PictureUploader < CarrierWave::Uploader::Base
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+
+  # Choose what kind of storage to use for this uploader:
+  storage :file # Local storage
+
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  process resize_to_limit: [400, 400]
+
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process resize_to_fit: [50, 50]
+  end
+
+  # Add a white list of extensions which are allowed to be uploaded.
+  # For images you might use something like this:
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+end
+```
 * Enter the command "sh git_check.sh".
 * Enter the following commands:
 ```
@@ -142,8 +170,16 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
   </section>
 </div>
 ```
+* Edit the app/views/users/_user.html.erb file and provide the code for displaying the thumbnail profile pictures for users who have them.  The code should look like this:
+```
+  . . . .
+  <% if user.picture? %>
+    <td><%= image_tag user.picture.url(:thumb) %></td>
+  <% end %>
+</tr>
+```
 * Stop the local server, and then restart it.  (If you neglect to do this, your browser will show an error message.)
-* In your browser, log in as an admin, go to the user index, and view the user profile of any user with a username that begins with "user-pic".
+* In your browser, log in as an admin, go to the user index, and view the user profile of any user who has a profile picture.
 * Enter the following commands:
 ```
 git add .
