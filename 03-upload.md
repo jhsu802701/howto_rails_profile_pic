@@ -100,7 +100,7 @@ end
 ```
   <div class="field">
     <span class="picture">
-      <b>OPTIONAL: Upload avatar</b>
+      <b>OPTIONAL: Upload profile picture</b>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
     </span>
   </div>
