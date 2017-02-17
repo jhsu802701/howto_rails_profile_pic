@@ -153,7 +153,7 @@ git add .
 git commit -m "Updated the seeding script to give profile pictures to a few users"
 ```
 
-# Updating the User Profile Page
+# Displaying the User Profile Pictures
 * Edit the app/views/users/show.html.erb file.  Add the profile picture display just before the delete button.  Your code should look like this:
 ```
     . . . .
