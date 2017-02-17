@@ -180,6 +180,7 @@ git commit -m "Updated the seeding script to give profile pictures to a few user
 ```
 * Stop the local server, and then restart it.  (If you neglect to do this, your browser will show an error message.)
 * In your browser, log in as an admin, go to the user index, and view the user profile of any user who has a profile picture.
+* Enter the command "sh git_check.sh".  All tests should pass, and there should be no offenses.
 * Enter the following commands:
 ```
 git add .
