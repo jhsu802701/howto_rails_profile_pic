@@ -86,7 +86,7 @@ end
 * Enter the command "alias test1='(command for repeating the tests that failed minus the TESTOPTS portion)'".
 * Enter the command "test1".  Both tests fail because the user registration edit form and the user registration signup form lack the option of uploading a file.
 
-## user Forms
+## User Forms
 * In the app/views/users/registrations/edit.html.erb file, add the following lines immediately before the username section:
 ```
   <div class="field">
