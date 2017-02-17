@@ -86,7 +86,7 @@ end
 * Enter the command "alias test1='(command for repeating the tests that failed minus the TESTOPTS portion)'".
 * Enter the command "test1".  Both tests fail because the user registration edit form and the user registration signup form lack the option of uploading a file.
 
-## User Edit Form
+## user Forms
 * In the app/views/users/registrations/edit.html.erb file, add the following lines immediately before the username section:
 ```
   <div class="field">
@@ -96,19 +96,6 @@ end
     </span>
   </div>
 ```
-* In the app/views/users/registrations/edit.html.erb file, add the following lines immediately before the account cancellation section:
-```
-<script type="text/javascript">
-  $('#micropost_picture').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
-    }
-  });
-</script>
-```
-
-## User Signup Form
 * In the app/views/users/registrations/new.html.erb file, add the following lines between the email section and the password section:
 ```
   <div class="field">
@@ -117,17 +104,6 @@ end
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
     </span>
   </div>
-```
-* In the app/views/users/registrations/new.html.erb file, add the following lines immediately before the "render" line:
-```
-<script type="text/javascript">
-  $('#micropost_picture').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
-    }
-  });
-</script>
 ```
 * Enter the command "test1".  Both tests now fail because the expected picture files are unavailable.
 
