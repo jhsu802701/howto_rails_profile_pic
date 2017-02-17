@@ -117,6 +117,7 @@ curl -o test/fixtures/files/sagan.jpg -OL https://upload.wikimedia.org/wikipedia
 curl -o test/fixtures/files/connery1.jpg -OL https://upload.wikimedia.org/wikipedia/commons/c/c8/Sean_Connery_1971_%28cropped%29.jpg
 curl -o test/fixtures/files/connery2.jpg -OL https://upload.wikimedia.org/wikipedia/commons/d/d1/Sean_Connery_en_Micheline_Roquebrune_%281983%29.jpg
 ```
+* Both tests fail because the profile pictures do not exist.  While the forms are present, the expected post-submission actions are not.
 
 ## User Registration Controller
 * Edit the file app/controllers/users/registrations_controller.rb.  In the configure_sign_up_params and configure_account_update_params definitions, add ":picture" to the list of keys.
