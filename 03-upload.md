@@ -10,65 +10,58 @@ Enter the command "git checkout -b 03-upload".
 * Replace the contents of the test/integration/users_picture_upload.rb file with the following:
 ```
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/BlockLength
 # rubocop:disable Metrics/MethodLength
 require 'test_helper'
 
-# NOTE: I could not figure out how to use Capybara to test for
-# the process of uploading a profile picture.
-# The following tests are based on the Rails Tutorial procedure
-# for adding a picture to a micropost.
 class UsersPictureUploadTest < ActionDispatch::IntegrationTest
+  include CarrierWaveDirect::Test::CapybaraHelpers
+
+  # Xpath string used for testing for images
+  def xpath_input_img(url)
+    str1 = './/img[@src="'
+    str2 = url
+    str3 = '"]'
+    output = "#{str1}#{str2}#{str3}"
+    output
+  end
+
   # uo: user object
   # fn: filename of image file
   # pd: password
   def edit_picture(uo, fn, pd)
     basename = File.basename fn
     login_as(uo, scope: :user)
-    get edit_user_registration_path(uo)
-    assert_select 'input[type=file]'
-    u = uo
-    pic = fixture_file_upload(fn, 'image/jpg')
-    patch user_registration_path,
-          params: { user: { picture: pic,
-                            current_password: pd } }
-    msg = 'Your account has been updated successfully.'
-    get user_path(u)
-    assert_match msg, response.body
-    url = "/uploads/user/picture/#{u.id}/#{basename}"
-    assert_select 'img' do
-      assert_select '[src=?]', url
-    end
+    visit root_path
+    click_on 'Edit Settings'
+    find('form input[type="file"]').set(Rails.root + fn)
+    fill_in('Current password', with: pd)
+    click_button('Update')
+    puts page.body
+    # assert page.has_text?('Your account has been updated successfully.')
+    click_on 'Your Profile'
+    url = "/uploads/user/picture/#{uo.id}/#{basename}"
+    page.assert_selector(:xpath, xpath_input_img(url))
   end
 
   test 'user can sign up with profile picture' do
-    get new_user_registration_path
-    assert_select 'input[type=file]'
-    p = fixture_file_upload('test/fixtures/files/sagan.jpg', 'image/jpg')
-    post user_registration_path,
-         params: { user: { username: 'csagan',
-                           last_name: 'Sagan',
-                           first_name: 'Carl',
-                           email: 'carl_sagan@example.com',
-                           picture: p,
-                           password: 'googolplex',
-                           password_confirmation: 'googalplex' } }
+    visit root_path
+    click_on 'Sign up now!'
+    fill_in('Last name', with: 'Sagan')
+    fill_in('First name', with: 'Carl')
+    fill_in('Username', with: 'csagan')
+    fill_in('Email', with: 'carl_sagan@example.com')
+    fill_in('Password', with: 'googolplex')
+    fill_in('Password confirmation', with: 'googolplex')
+    basename = 'sagan.jpg'
+    find('form input[type="file"]').set(Rails.root + "test/fixtures/files/#{basename}")
+    click_button('Sign up')
+    open_email('carl_sagan@example.com')
+    current_email.click_link 'Confirm my account'
+    login_user('csagan', 'googolplex', false)
+    click_on 'Your Profile'
     u = User.find_by(username: 'csagan')
-    assert u.picture?
-    get user_confirmation_path(confirmation_token: u.confirmation_token)
-    follow_redirect!
-    msg = 'Your email address has been successfully confirmed.'
-    assert_match msg, response.body
-    get new_user_session_path
-    post user_session_path,
-         params: { user: { username: 'csagan',
-                           password: 'googalplex' } }
-    get user_path(u)
-    bn = 'sagan.jpg'
-    url = "/uploads/user/picture/#{u.id}/#{bn}"
-    assert_select 'img' do
-      assert_select '[src=?]', url
-    end
+    url = "/uploads/user/picture/#{u.id}/#{basename}"
+    page.assert_selector(:xpath, xpath_input_img(url))
   end
 
   test 'user can edit profile picture' do
@@ -79,7 +72,6 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
   end
 end
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/BlockLength
 # rubocop:enable Metrics/MethodLength
 ```
 * Enter the command "sh build_fast.sh".  Both new integration tests will fail.
