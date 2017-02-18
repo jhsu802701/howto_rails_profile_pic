@@ -124,3 +124,4 @@ git checkout master
 git pull
 sh heroku.sh
 ```
+* Congratulations!  Your users now can have profile pictures.
