@@ -14,8 +14,6 @@ Enter the command "git checkout -b 03-upload".
 require 'test_helper'
 
 class UsersPictureUploadTest < ActionDispatch::IntegrationTest
-  include CarrierWaveDirect::Test::CapybaraHelpers
-
   # Xpath string used for testing for images
   def xpath_input_img(url)
     str1 = './/img[@src="'
@@ -109,10 +107,10 @@ curl -o test/fixtures/files/sagan.jpg -OL https://upload.wikimedia.org/wikipedia
 curl -o test/fixtures/files/connery1.jpg -OL https://upload.wikimedia.org/wikipedia/commons/c/c8/Sean_Connery_1971_%28cropped%29.jpg
 curl -o test/fixtures/files/connery2.jpg -OL https://upload.wikimedia.org/wikipedia/commons/d/d1/Sean_Connery_en_Micheline_Roquebrune_%281983%29.jpg
 ```
-* Both tests fail because the profile pictures do not exist.  While the forms are present, the expected post-submission actions are not.
+* Enter the command "test1".  Both tests fail because the profile pictures do not exist.  While the forms are present, the expected post-submission actions are not.
 
 ## User Registration Controller
-* Edit the file app/controllers/users/registrations_controller.rb.  In the configure_sign_up_params and configure_account_update_params definitions, add ":picture" to the list of keys.
+Edit the file app/controllers/users/registrations_controller.rb.  In the configure_sign_up_params and configure_account_update_params definitions, add ":picture" to the list of keys.
 
 ## Wrapping Up
 * Enter the command "git push origin 03-upload".
