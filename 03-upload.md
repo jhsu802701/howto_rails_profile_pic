@@ -34,8 +34,7 @@ class UsersPictureUploadTest < ActionDispatch::IntegrationTest
     find('form input[type="file"]').set(Rails.root + fn)
     fill_in('Current password', with: pd)
     click_button('Update')
-    puts page.body
-    # assert page.has_text?('Your account has been updated successfully.')
+    assert page.has_text?('Your account has been updated successfully.')
     click_on 'Your Profile'
     url = "/uploads/user/picture/#{uo.id}/#{basename}"
     page.assert_selector(:xpath, xpath_input_img(url))
