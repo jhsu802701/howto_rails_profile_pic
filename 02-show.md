@@ -190,7 +190,7 @@ git commit -m "Updated the user profile page to show profile pictures and the in
 ## Wrapping Up
 * Enter the command "git push origin 02-show".
 * Go to the GitHub repository and click on the "Compare and pull request" button for this branch.
-* Accept this pull request to merge it with the master branch, but do NOT delete this branch.
+* Accept this pull request to merge it with the master branch.  Once the branch has been merged, you may click on the option to delete it.
 * Enter the following commands:
 ```
 git checkout master
