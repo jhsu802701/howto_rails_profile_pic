@@ -1,9 +1,9 @@
-# Ruby on Racetracks: Adding User Profile Pictures
+# Ruby on Racetracks Tutorial: Adding User Profile Pictures
 
 ## Prerequisites
-* You should be comfortable using my rbenv-general Docker image. If you don't already have it set up, go to the [Ruby on Racetracks site](http://www.rubyonracetracks.com/) and click on Installation -> Getting Started.
-* You should be familiar with my [Rails From Scratch protocol](http://www.rubyonracetracks.com/rails_from_scratch.html) for starting apps.
-* You should be comfortable using my [GenericApp gem](https://github.com/jhsu802701/generic_app) for starting new Ruby on Rails projects.
+* Docker should be installed.  This is covered in the [Docker Tutorial](https://github.com/jhsu802701/tutorial-docker-stretch).
+* You should have one of my rbenv-general Docker images installed.  This is covered in the [Docker Tutorial](https://github.com/jhsu802701/tutorial-docker-stretch).
+* You should be familiar with the process of creating a new Rails app.  This is covered in the [GenericApp Tutorial](https://gist.github.com/jhsu802701/ace85adf7c3f197391c4457dec863e89).
 
 ## What's the point?
 This document shows how to give users the option of adding a profile picture.
